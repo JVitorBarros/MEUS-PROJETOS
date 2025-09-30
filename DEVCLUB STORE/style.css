@@ -1,77 +1,53 @@
-/*  Estilização global */
+/*  Estilização universal   */
 *{
-    padding: 0px;
-    margin: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family:'Roboto', sans-serif;
+    list-style: none;
+    font-family: "Montserrat", sans-serif;;
 }
-/* Estilizando o body */
+
+/* Estilizando o body   */
 body{
-    background-color: rgba(65, 65, 114, 0.541);
+    background-color: #0f0f1e;
+    color: #fff;
+    font-size: 16px;
+    overflow: hidden;
 }
 
+/*  Estilizando o Header    */
 
-/* Estilizando a header - cabecalho */
-
-#cabecalho{
+header{
     display: flex;
     justify-content: space-between;
-    padding: 20px 60px  0px 60px
+    padding: 20px 50px 10px 50px;
 }
-
-/* Estilizando a nav - navegacao */
-
+/*  Estilizando o logo  */
+.logo{
+    font-family: "Orbitron", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #00f7ff;
+    text-shadow: 0 0 10px rgba(0, 247, 255, 0.5);
+}
+/*  Estilizando o nav - navegação   */
 .menu-navegacao{
     display: flex;
-    list-style: none; 
+    flex-direction: row;
+    gap: 48;
 }
-
 .menu-navegacao li{
-    padding: 10px 20px; 
+    margin: 0px 20px;
 }
-
 .menu-navegacao a{
-    text-decoration: none;
-    color: white;
     position: relative;
-    padding: 0px 10px;
+    text-decoration: none;
+    color: #fff;
 }
-
 .menu-navegacao a::after{
     content: '';
-    position: absolute;
-    background-color: black;
-    height: 3px;
-    width: 0;
-    left: 0;
-    bottom: -10px;
-    transition: 0.7s;
-}
-
-.menu-navegacao a:hover::after{
     width: 100%;
-}
-
-/* Estilizando o main*/
-main{
-    display: flex;
-    border: 1px solid black;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Estilizando os botões */
-
-#botao-esquerdo, #botao-direito{
-    height: 45px;
-    width: 60px;
-    border: 1px solid rgb(185, 185, 245);
-    border-radius: 100px;
-    background-color: rgba(0, 0, 0, 0.233);
-    cursor: pointer;
-    margin: 0px 50px;
-}
-
-#botao-esquerdo{
-    transform: rotate(180deg);
+    height: 0px;
+    background-color: #fff;
+    position: absolute;
 }
