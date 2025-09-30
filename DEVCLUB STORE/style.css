@@ -1,0 +1,77 @@
+/*  Estilização global */
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family:'Roboto', sans-serif;
+}
+/* Estilizando o body */
+body{
+    background-color: rgba(65, 65, 114, 0.541);
+}
+
+
+/* Estilizando a header - cabecalho */
+
+#cabecalho{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px  0px 60px
+}
+
+/* Estilizando a nav - navegacao */
+
+.menu-navegacao{
+    display: flex;
+    list-style: none; 
+}
+
+.menu-navegacao li{
+    padding: 10px 20px; 
+}
+
+.menu-navegacao a{
+    text-decoration: none;
+    color: white;
+    position: relative;
+    padding: 0px 10px;
+}
+
+.menu-navegacao a::after{
+    content: '';
+    position: absolute;
+    background-color: black;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.7s;
+}
+
+.menu-navegacao a:hover::after{
+    width: 100%;
+}
+
+/* Estilizando o main*/
+main{
+    display: flex;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilizando os botões */
+
+#botao-esquerdo, #botao-direito{
+    height: 45px;
+    width: 60px;
+    border: 1px solid rgb(185, 185, 245);
+    border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0.233);
+    cursor: pointer;
+    margin: 0px 50px;
+}
+
+#botao-esquerdo{
+    transform: rotate(180deg);
+}
