@@ -1,0 +1,50 @@
+
+/*  Estilização global  */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/*  Variaveis cores */
+:root{
+    /* modo escuro */
+    --cor-fundo-escuro-primaria: #050a1d;
+    --cor-fundo-escuro-secundaria: #0a1640;
+    --cor-fundo-escuro-container-header: #1f2535;
+    --cor-fundo-escuro-botao-tema: #2f354d;
+}
+/*  Estilizando o body  */
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    background: linear-gradient(to bottom, var(--cor-fundo-escuro-primaria), var(--cor-fundo-escuro-secundaria));
+}
+/*  Estilizando o header - container topo  */
+.container-topo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 60px;
+    padding: 0px 20px ;
+    border-radius: 20px;
+    background: var(--cor-fundo-escuro-container-header);   
+}
+
+/*  Estilizando o botao alterar tema */
+.caixa-tema{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--cor-fundo-escuro-botao-tema);
+    height: 70%;
+    width: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.caixa-tema:hover{
+    border: 2px solid red;
+}
+
