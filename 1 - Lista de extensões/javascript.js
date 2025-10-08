@@ -1,16 +1,5 @@
-let divUsuario = document.querySelector('.usuarios');
+const temas = [...document.querySelectorAll('.caixa-temas')];
+const temaClaro = document.querySelector('#tema-claro');
+const temaEscuro = document.querySelector('#tema-escuro');
 
-fetch("data.json")
-.then(response => response.json())
-.then(({usuarios}) =>{
-    const html = usuarios.map(dados => `
-        <li>
-            <img src="${dados.logo}"></img>
-        </li>
-        <li>${dados.name}</li>
-        <li>${dados.description}</li>
-        <li>${dados.isActive}</li>
-        
-        `).join('');
-    divUsuario.innerHTML = html;
-});
+temas.AddEventListener('click', alert('clcicou'));
