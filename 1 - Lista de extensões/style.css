@@ -4,17 +4,33 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Noto Sans';
 }
+/* fontes */
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: italic;
+    src: url(assets/fonts/NotoSans-Italic-VariableFont_wdth\,wght.ttf) format('truetype');
+    
+}
+
 /*  Variaveis cores */
 :root{
     /* modo escuro */
     --cor-fundo-escuro-primaria: #050a1d;
     --cor-fundo-escuro-secundaria: #0a1640;
     --cor-fundo-escuro-container-header: #1f2535;
+    --cor-logo-fonte-escuro: #eeeef0;
     --cor-fundo-escuro-botao-tema: #2f354d;
+    /* modo claro */
+    --cor-fundo-claro-primaria: #ecf3fd;
+    --cor-fundo-claro-secundaria: #effbf9;
+    --cor-fundo-claro-container-header: #fcfdff;
+    --cor-logo-fonte-claro: #09163e;
+    --cor-fundo-claro-botao-tema: #eeeef0;
 }
 /*  Estilizando o body  */
-body{
+.corpo{
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -32,12 +48,24 @@ body{
     border-radius: 20px;
     background: var(--cor-fundo-escuro-container-header);   
 }
-
+.caixa-logo-filho{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 150px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: larger;
+    
+}
 /*  Estilizando o botao alterar tema */
 .caixa-tema{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     background: var(--cor-fundo-escuro-botao-tema);
     height: 70%;
     width: 40px;
@@ -47,4 +75,51 @@ body{
 .caixa-tema:hover{
     border: 2px solid red;
 }
+.caixa-tema:active{
+    border: 2px solid rgba(255, 0, 0, 0.452);
+}
+.modo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    
+}
+.ativo{
+    opacity: 0;
+    
+}
 
+/* Modo tema escuro */
+
+.corpo-escuro{
+    background: linear-gradient(to bottom, var(--cor-fundo-escuro-primaria), var(--cor-fundo-escuro-secundaria));
+}
+.caixa-logo-escuro{
+    background-image: url(assets/images/logo-nome-dark.png);
+    background-repeat: no-repeat;
+    color: var(--cor-logo-fonte-escuro);
+}
+.container-topo-escuro{
+    background: var(--cor-fundo-escuro-container-header);  
+}
+.caixa-tema-escuro{
+    background: var(--cor-fundo-escuro-botao-tema);
+}
+
+/* Modo tema claro  */
+
+.corpo-claro{
+    background: linear-gradient(to bottom, var(--cor-fundo-claro-primaria), var(--cor-fundo-claro-secundaria));
+}
+.caixa-logo-claro{
+    background-image: url(assets/images/logo-name-light.png);
+    background-repeat: no-repeat;
+    color: var(--cor-logo-fonte-claro); 
+}
+.container-topo-claro{
+    background: var(--cor-fundo-claro-container-header) 
+}
+.caixa-tema-claro{
+    background: var(--cor-fundo-claro-botao-tema);
+}
