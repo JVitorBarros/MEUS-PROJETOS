@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+    <!--===== HEAD =====-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,25 +8,29 @@
     <title>Extensions</title>
     <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    
 </head>
-<body class="corpo">
+<!-- ===== BODY ===== -->
+<body class="tema-escuro">
+     <!-- ===== HEADER =====-->
     <header class="container-topo">
-        <div class="caixa-logo-pai">
-            <a href="index.html" class="caixa-logo-filho">
-                <img src="assets/images/logo-name.PNG" alt="Logo Extensions">
+        <div class="logo">
+            <a href="index.html" class="logo__link">
+                <img src="assets/images/logo-name.PNG" alt="Logo Extensions" class="logo__image">
                 <p>Extensions</p>
             </a>
         </div>
-        <div class="caixa-tema">
-            <div id="escuro" class="modo">
-                <img src="assets/images/icon-sun.svg" alt="Logo de um sol para o tema claro">
-            </div>
-            <div id="claro" class="modo ativo">
-                <img src="assets/images/icon-moon.svg" alt="Logo de uma lua para o tema claro">
-            </div>
+        <div class="tema">
+            <button id="modo-claro" class="botao-tema">
+                <img src="assets/images/icon-sun.svg" alt="" arial-label="ativar modo claro">
+            </button>
+            <button id="modo-escuro" class="botao-tema ativo">
+                <img src="assets/images/icon-moon.svg" alt="" arial aria-label="ativar modo escuro">
+            </button>
         </div>
     </header>
-    <script src="script.js"></script>
+    <!-- ===== SCRIPT =====-->
+    <script src="script.js" defer></script>
 </body>
 </html>
 

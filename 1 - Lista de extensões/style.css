@@ -1,41 +1,47 @@
 
-/*  Estilização global  */
+/*  =========== Estilização global ==========  */
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Noto Sans';
 }
-/* fontes */
+/* ========== fontes ========== */
 @font-face {
     font-family: 'Noto Sans';
     font-style: italic;
-    src: url(assets/fonts/NotoSans-Italic-VariableFont_wdth\,wght.ttf) format('truetype');
+    src: url(assets/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf) format('truetype');
     
 }
 
-/*  Variaveis cores */
+/* ========== Variaveis cores ========== */
 :root{
+
     /* modo escuro */
+
     --cor-fundo-escuro-primaria: #050a1d;
     --cor-fundo-escuro-secundaria: #0a1640;
     --cor-fundo-escuro-container-header: #1f2535;
     --cor-logo-fonte-escuro: #eeeef0;
     --cor-fundo-escuro-botao-tema: #2f354d;
     /* modo claro */
+
     --cor-fundo-claro-primaria: #ecf3fd;
     --cor-fundo-claro-secundaria: #effbf9;
     --cor-fundo-claro-container-header: #fcfdff;
     --cor-logo-fonte-claro: #09163e;
     --cor-fundo-claro-botao-tema: #eeeef0;
 }
-/*  Estilizando o body  */
-.corpo{
+/* ========== Estilizando o body ========== */
+.body{
     height: 100vh;
     display: flex;
     justify-content: center;
-    margin-top: 40px;
-    background: linear-gradient(to bottom, var(--cor-fundo-escuro-primaria), var(--cor-fundo-escuro-secundaria));
+    font-family: 'Noto Sans';
+}
+
+    /* body modo escuro */
+body.tema-escuro{
+    background-color: ;
 }
 /*  Estilizando o header - container topo  */
 .container-topo{
@@ -43,12 +49,14 @@
     justify-content: space-between;
     align-items: center;
     width: 80%;
+    max-width: 1200px;
     height: 60px;
     padding: 0px 20px ;
+    margin: 40px auto 0;
     border-radius: 20px;
     background: var(--cor-fundo-escuro-container-header);   
 }
-.caixa-logo-filho{
+.logo__link{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -61,65 +69,37 @@
     
 }
 /*  Estilizando o botao alterar tema */
-.caixa-tema{
+.tema{
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     background: var(--cor-fundo-escuro-botao-tema);
-    height: 70%;
+    height: 40px;
     width: 40px;
     border-radius: 10px;
     cursor: pointer;
 }
-.caixa-tema:hover{
+.tema:hover{
     border: 2px solid red;
+    
 }
-.caixa-tema:active{
+.tema:active{
     border: 2px solid rgba(255, 0, 0, 0.452);
 }
-.modo{
+.botao-tema {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    
+    border: none;
+    cursor: pointer;
+    background: transparent;
 }
+
 .ativo{
-    opacity: 0;
-    
+    opacity: 0;  
 }
 
 /* Modo tema escuro */
 
-.corpo-escuro{
-    background: linear-gradient(to bottom, var(--cor-fundo-escuro-primaria), var(--cor-fundo-escuro-secundaria));
-}
-.caixa-logo-escuro{
-    background-image: url(assets/images/logo-nome-dark.png);
-    background-repeat: no-repeat;
-    color: var(--cor-logo-fonte-escuro);
-}
-.container-topo-escuro{
-    background: var(--cor-fundo-escuro-container-header);  
-}
-.caixa-tema-escuro{
-    background: var(--cor-fundo-escuro-botao-tema);
-}
-
-/* Modo tema claro  */
-
-.corpo-claro{
-    background: linear-gradient(to bottom, var(--cor-fundo-claro-primaria), var(--cor-fundo-claro-secundaria));
-}
-.caixa-logo-claro{
-    background-image: url(assets/images/logo-name-light.png);
-    background-repeat: no-repeat;
-    color: var(--cor-logo-fonte-claro); 
-}
-.container-topo-claro{
-    background: var(--cor-fundo-claro-container-header) 
-}
-.caixa-tema-claro{
-    background: var(--cor-fundo-claro-botao-tema);
-}
