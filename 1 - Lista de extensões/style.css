@@ -23,19 +23,22 @@
     --cor-fundo-escuro-container-header: #1f2535;
     --cor-logo-fonte-escuro: #fcffff;
     --cor-fundo-escuro-botao-tema: #2f354d;
+    --cor-fundo-escuro-botao-opcoa: #2f354d;
     /* modo claro */
 
-    --cor-fundo-claro-primaria: #ecf3fd;
+    --cor-fundo-claro-primaria: #dae7f8;
     --cor-fundo-claro-secundaria: #effbf9;
     --cor-fundo-claro-container-header: #fcfdff;
     --cor-logo-fonte-claro: #12173e;
     --cor-fundo-claro-botao-tema: #eeeef0;
+    --cor-fundo-claro-botao-opcao: #fcfdff;
 }
 /* ========== Estilizando o body ========== */
 body{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
     font-family: 'Noto Sans';
     
 }
@@ -61,6 +64,7 @@ body.tema-claro{
     padding: 0px 20px ;
     margin: 40px auto 0;
     border-radius: 20px;
+    border: 2px solid red;
       
 }
 
@@ -104,14 +108,29 @@ body.tema-claro .logo__link{
     width: 40px;
     border-radius: 10px;
     cursor: pointer;
+    transition: 1s;
 }
-.tema:hover{
-    border: 2px solid red;
-    
+
+/* Modo tema escuro */
+
+body.tema-escuro .tema{
+    background: linear-gradient(var(--cor-fundo-escuro-botao-tema));
 }
-.tema:active{
-    border: 2px solid rgba(255, 0, 0, 0.452);
+/* Modo tema claro */
+
+body.tema-claro .tema{
+    background: linear-gradient(var(--cor-fundo-claro-botao-tema));
 }
+
+
+    /* modo escuro */
+body.tema-escuro .tema:hover{
+    background: #888888dc
+}
+body.tema-claro .tema:hover{
+    background: #888888;
+}
+
 .botao-tema {
     display: flex;
     justify-content: center;
@@ -126,13 +145,98 @@ body.tema-claro .logo__link{
     opacity: 0;  
 }
 
-/* Modo tema escuro */
+/* parte 02 */
 
-body.tema-escuro .tema{
-    background: linear-gradient(var(--cor-fundo-escuro-botao-tema));
+/* ========== estilizando o MAIN - Conteiner Extensoes ========== */
+
+.container-extensoes{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-width: 1200px;
+    margin: 70px auto 0;
+    border: 2px solid red;
 }
-/* Modo tema claro */
+.caixa-opcoes{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    font-size: 13px;
+    
+}
+.lista-opcoes{
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    width: 300px;
+}
 
-body.tema-claro .tema{
-    background: linear-gradient(var(--cor-fundo-claro-botao-tema));
+    /* Modo escuro */
+
+body.tema-escuro .caixa-opcoes{
+    color: var(--cor-logo-fonte-escuro);
+}
+
+    /* Modo claro */
+body.tema-claro .caixa-opcoes{
+    color: var(--cor-logo-fonte-claro);
+}
+
+/* ========== Estilizando a lista de opções ========== */
+
+.opcao{
+    
+    background: var(--cor-fundo-escuro-botao-tema);
+    color: var(--cor-logo-fonte-escuro);
+    font-size: medium;
+    font-weight: 400;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+
+    /* Modo escuro */
+body.tema-escuro .opcao{
+    background: var(--cor-fundo-escuro-botao-tema);
+}
+
+    /* Modo claro */
+body.tema-claro .opcao{
+    background: var(--cor-fundo-claro-botao-opcao);
+    color: var(--cor-logo-fonte-claro);
+}
+
+body.tema-escuro .opcao:hover{
+    background: #888888dc;
+}
+
+body.tema-claro .opcao:hover{
+    background: #888888;
+}
+
+/* parte 03 */
+
+.extensoes{
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px auto 0;
+    gap: 9px;
+}
+
+.bloco-extensao{
+    background: var(--cor-fundo-escuro-container-header);
+    max-width: 300px;
+    min-width: 351px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.caixaSuperior{
+    border: 1px solid red;
+    display: flex;
 }

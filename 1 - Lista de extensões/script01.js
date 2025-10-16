@@ -20,5 +20,4 @@ function alterarTema(){
         temaAtual = 'escuro';
     }
 }
-
 botaoTema.addEventListener('click', alterarTema);
