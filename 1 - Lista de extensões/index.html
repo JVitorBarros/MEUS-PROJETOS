@@ -8,6 +8,7 @@
     <title>Extensions</title>
     <link rel="shortcut icon" href="assets/images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
     
 </head>
 <!-- ===== BODY ===== -->
@@ -22,14 +23,13 @@
         </div>
         <div class="tema">
             <button id="modo-claro" class="botao-tema">
-                <img src="assets/images/icon-sun.svg" alt="" aria-label="ativar modo claro">
+                <img src="assets/images/icon-sun.svg" alt="icon de sol" aria-label="ativar modo claro">
             </button>
-            <button id="modo-escuro" class="botao-tema ativo">
-                <img src="assets/images/icon-moon.svg" alt="" aria-label="ativar modo escuro">
+            <button id="modo-escuro" class="botao-tema inativo">
+                <img src="assets/images/icon-moon.svg" alt="icon de uma lua" aria-label="ativar modo escuro">
             </button>
         </div>
     </header>
-    <!-- parte 2-->
     <!-- ========== MAIN ========== -->
     <main class="container-extensoes">
         <section class="caixa-opcoes">
@@ -46,7 +46,7 @@
         </section>
     </main>
     <!-- ===== SCRIPT =====-->
+    <script src="carregarExtensoes.js" defer></script>
     <script src="script01.js" defer></script>
-    <script src="script02.js" defer></script>
 </body>
-</html>
+</html>

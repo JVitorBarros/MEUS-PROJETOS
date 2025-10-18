@@ -1,84 +1,103 @@
-
 /*  =========== Estilização global ==========  */
-*{
+
+/* Remove margens e espaçamentos padrão de todos os elementos
+   e define o cálculo de tamanhos usando border-box para facilitar o layout. */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-/* ========== fontes ========== */
+/* ========== Fontes personalizadas ========== */
+
+/* Importa a fonte “Noto Sans” em estilo itálico, 
+   armazenada localmente na pasta 'assets/fonts'. */
 @font-face {
     font-family: 'Noto Sans';
     font-style: italic;
-    src: url(assets/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf) format('truetype');   
+    src: url("assets/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
 }
 
-/* ========== Variaveis cores ========== */
-:root{
+/* ========== Variáveis de cores ========== */
 
-    /* modo escuro */
-
+/* Define variáveis globais de cores para facilitar a troca entre temas
+   (modo claro e escuro). */
+:root {
+    /* ---------- Modo escuro ---------- */
     --cor-fundo-escuro-primaria: #050a1d;
     --cor-fundo-escuro-secundaria: #0a1640;
     --cor-fundo-escuro-container-header: #1f2535;
     --cor-logo-fonte-escuro: #fcffff;
     --cor-fundo-escuro-botao-tema: #2f354d;
     --cor-fundo-escuro-botao-opcoa: #2f354d;
-    /* modo claro */
+    --cor-fundo-hover-escuro: #888888dc;
+    --cor-fonte-escuro-titulo-extensao: #f6f9ff;
+    --cor-fonte-escuro-descricao-extensao: #848a98;
 
+    /* ---------- Modo claro ---------- */
     --cor-fundo-claro-primaria: #dae7f8;
     --cor-fundo-claro-secundaria: #effbf9;
     --cor-fundo-claro-container-header: #fcfdff;
     --cor-logo-fonte-claro: #12173e;
     --cor-fundo-claro-botao-tema: #eeeef0;
     --cor-fundo-claro-botao-opcao: #fcfdff;
+    --cor-fundo-hover-claro: #888888;
 }
-/* ========== Estilizando o body ========== */
-body{
-    height: 100vh;
+
+/* ========== Estilização do body ========== */
+
+/* Define o corpo da página como um contêiner flexível centralizado. */
+body {
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'Noto Sans';
-    
+    min-height: 100vh;
 }
 
-    /* body modo escuro */
-body.tema-escuro{
+/* ---------- Modo escuro ---------- */
+body.tema-escuro {
     background: linear-gradient(to bottom, var(--cor-fundo-escuro-primaria), var(--cor-fundo-escuro-secundaria));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
-    /* body modo claro*/
-body.tema-claro{
+/* ---------- Modo claro ---------- */
+body.tema-claro {
     background: linear-gradient(to bottom, var(--cor-fundo-claro-primaria), var(--cor-fundo-claro-secundaria));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
-/* ========== Estilizando o header - container topo ========== */
-.container-topo{
+/* ========== Header - container superior ========== */
+
+/* Define o layout do contêiner do topo da página (header). */
+.container-topo {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 80%;
     max-width: 1200px;
     height: 60px;
-    padding: 0px 20px ;
+    padding: 0px 20px;
     margin: 40px auto 0;
     border-radius: 20px;
-    border: 2px solid red;
-      
 }
 
-    /* container topo modo escuro */
-body.tema-escuro .container-topo{
+/* ---------- Header modo escuro ---------- */
+body.tema-escuro .container-topo {
     background: var(--cor-fundo-escuro-container-header);
 }
 
-    /* container topo modo claro */
-body.tema-claro .container-topo{
+/* ---------- Header modo claro ---------- */
+body.tema-claro .container-topo {
     background: var(--cor-fundo-claro-container-header);
 }
 
-.logo__link{
+/* Estiliza o link de logo no topo. */
+.logo__link {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -88,18 +107,19 @@ body.tema-claro .container-topo{
     font-weight: 700;
     font-size: larger;
 }
-    /* Logo link modo escuro */
-body.tema-escuro .logo__link{
+
+/* ---------- Cores da logo ---------- */
+body.tema-escuro .logo__link {
     color: var(--cor-logo-fonte-escuro);
 }
-
-    /* Logo link modo claro */
-body.tema-claro .logo__link{
+body.tema-claro .logo__link {
     color: var(--cor-logo-fonte-claro);
 }
 
-/* ========== Estilizando o botao alterar tema ========== */
-.tema{
+/* ========== Botão de alternância de tema ========== */
+
+/* Define o estilo base do botão de tema (container externo). */
+.tema {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,26 +131,23 @@ body.tema-claro .logo__link{
     transition: 1s;
 }
 
-/* Modo tema escuro */
-
-body.tema-escuro .tema{
+/* ---------- Fundo do botão de tema ---------- */
+body.tema-escuro .tema {
     background: linear-gradient(var(--cor-fundo-escuro-botao-tema));
 }
-/* Modo tema claro */
-
-body.tema-claro .tema{
+body.tema-claro .tema {
     background: linear-gradient(var(--cor-fundo-claro-botao-tema));
 }
 
-
-    /* modo escuro */
-body.tema-escuro .tema:hover{
-    background: #888888dc
+/* ---------- Efeito hover ---------- */
+body.tema-escuro .tema:hover {
+    background: var(--cor-fundo-hover-escuro);
 }
-body.tema-claro .tema:hover{
-    background: #888888;
+body.tema-claro .tema:hover {
+    background: var(--cor-fundo-hover-claro);
 }
 
+/* Botões internos (ícones de sol e lua). */
 .botao-tema {
     display: flex;
     justify-content: center;
@@ -139,57 +156,59 @@ body.tema-claro .tema:hover{
     border: none;
     cursor: pointer;
     background: transparent;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
 }
 
-.ativo{
-    opacity: 0;  
+/* Classe usada para ocultar o ícone inativo. */
+.inativo {
+    opacity: 0;
 }
 
-/* parte 02 */
+/* ========== Container principal (main) ========== */
 
-/* ========== estilizando o MAIN - Conteiner Extensoes ========== */
-
-.container-extensoes{
+/* Estrutura principal das extensões. */
+.container-extensoes {
     display: flex;
     flex-direction: column;
     width: 80%;
     max-width: 1200px;
     margin: 70px auto 0;
-    border: 2px solid red;
 }
-.caixa-opcoes{
+
+/* Caixa de opções de filtros e título. */
+.caixa-opcoes {
     display: flex;
     justify-content: space-between;
     max-width: 1200px;
     font-size: 13px;
-    
 }
-.lista-opcoes{
+
+/* Lista de botões de filtros (ativos, inativos, todos). */
+.lista-opcoes {
     display: flex;
     justify-content: end;
     gap: 10px;
     width: 300px;
 }
 
-    /* Modo escuro */
-
-body.tema-escuro .caixa-opcoes{
+/* ---------- Cores da caixa de opções ---------- */
+body.tema-escuro .caixa-opcoes {
     color: var(--cor-logo-fonte-escuro);
 }
-
-    /* Modo claro */
-body.tema-claro .caixa-opcoes{
+body.tema-claro .caixa-opcoes {
     color: var(--cor-logo-fonte-claro);
 }
 
-/* ========== Estilizando a lista de opções ========== */
+/* ========== Botões de filtro ========== */
 
-.opcao{
-    
+/* Estilização padrão dos botões de filtro (opções). */
+.opcao {
     background: var(--cor-fundo-escuro-botao-tema);
     color: var(--cor-logo-fonte-escuro);
     font-size: medium;
-    font-weight: 400;
+    font-weight: 549;
     padding: 10px 20px;
     border: 2px solid transparent;
     border-radius: 20px;
@@ -197,46 +216,179 @@ body.tema-claro .caixa-opcoes{
     transition: 0.5s;
 }
 
-
-    /* Modo escuro */
-body.tema-escuro .opcao{
+/* ---------- Cores do botão por tema ---------- */
+body.tema-escuro .opcao {
     background: var(--cor-fundo-escuro-botao-tema);
 }
-
-    /* Modo claro */
-body.tema-claro .opcao{
+body.tema-claro .opcao {
     background: var(--cor-fundo-claro-botao-opcao);
     color: var(--cor-logo-fonte-claro);
 }
 
-body.tema-escuro .opcao:hover{
-    background: #888888dc;
+/* ---------- Efeitos hover ---------- */
+body.tema-escuro .opcao:hover {
+    background: var(--cor-fundo-hover-escuro);
+}
+body.tema-claro .opcao:hover {
+    background: var(--cor-fundo-hover-claro);
 }
 
-body.tema-claro .opcao:hover{
-    background: #888888;
-}
+/* ========== Blocos de extensões ========== */
 
-/* parte 03 */
-
-.extensoes{
+/* Container geral das extensões. */
+.extensoes {
     max-width: 1200px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin: 30px auto 0;
     gap: 9px;
+    margin-bottom: 40px;
 }
 
-.bloco-extensao{
+/* Bloco individual de cada extensão. */
+.bloco-extensao {
     background: var(--cor-fundo-escuro-container-header);
+    border: 0.5px solid rgba(160, 159, 159, 0.384);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     max-width: 300px;
-    min-width: 351px;
+    height: 170px;
+    width: 300px;
+    padding: 10px;
     border-radius: 20px;
-    position: relative;
 }
 
-.caixaSuperior{
-    border: 1px solid red;
+/* Parte superior (ícone, título e descrição). */
+.caixaSuperior {
     display: flex;
+    gap: 10px;
+}
+
+.titulo__descricao__extensao h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.titulo__descricao__extensao p {
+    font-size: 100;
+}
+
+/* ---------- Modo escuro ---------- */
+body.tema-escuro .bloco-extensao {
+    background: var(--cor-fundo-escuro-container-header);
+}
+body.tema-escuro .bloco-extensao h1 {
+    color: var(--cor-fonte-escuro-titulo-extensao);
+}
+body.tema-escuro .bloco-extensao p {
+    color: var(--cor-fonte-escuro-descricao-extensao);
+}
+
+/* ---------- Modo claro ---------- */
+body.tema-claro .bloco-extensao {
+    background: var(--cor-fundo-claro-container-header);
+    color: var(--cor-logo-fonte-claro);
+}
+body.tema-claro .bloco-extensao h1 {
+    color: var(--cor-logo-fonte-claro);
+}
+body.tema-claro .bloco-extensao p {
+    color: #8b8b94;
+}
+
+/* ========== Caixa inferior (botões e switch) ========== */
+
+.caixaInferior {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Botões internos do bloco. */
+.caixaInferior button {
+    border: 0.5px solid rgba(160, 159, 159, 0.384);
+    border-radius: 25px;
+    height: 40px;
+    width: 80px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/* ---------- Botões modo escuro ---------- */
+body.tema-escuro .caixaInferior button {
+    background-color: #1f2535;
+    color: #cdd1dd;
+}
+body.tema-escuro .caixaInferior button:hover {
+    background-color: #848a983a;
+}
+
+/* ---------- Botões modo claro ---------- */
+body.tema-claro .caixaInferior button {
+    background-color: #fcfdfe;
+    color: var(--cor-logo-fonte-claro);
+}
+body.tema-claro .caixaInferior button:hover {
+    background-color: #888888;
+}
+
+/* ---------- Foco de inputs e botões ---------- */
+input:focus, button:focus {
+    border: 2px solid red;
+    outline: none;
+    transition: none;
+}
+
+/* ========== Interruptor (switch de ativação) ========== */
+
+/* Oculta o checkbox padrão. */
+.ckb {
+    display: none;
+}
+
+/* Contêiner do switch. */
+.caixaInput {
+    display: flex;
+    align-items: center;
+}
+
+/* Área clicável do switch. */
+.swicth {
+    position: relative;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    width: 45px;
+    height: 27px;
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+}
+
+/* Bolinha deslizante do switch. */
+.slider {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    transition: all .5s ease-in-out;
+}
+
+/* Quando o checkbox estiver marcado, altera a cor e move o botão. */
+.ckb:checked ~ .swicth {
+    background: red;
+}
+.ckb:checked ~ .swicth .slider {
+    transform: translateX(19px);
+}
+
+/* ---------- Cores do switch conforme o tema ---------- */
+body.tema-escuro .swicth {
+    background: #525868;
+}
+body.tema-claro .swicth {
+    background: #c6c6c6;
 }
