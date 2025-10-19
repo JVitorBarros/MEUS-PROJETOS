@@ -1,190 +1,120 @@
+// ==================================================================
+// ========== SELETORES DE ELEMENTOS DO DOM (VARIÁVEIS GLOBAIS) ==========
+// ==================================================================
 
-
-// ========== LOGICA PARA ALTERAÇÃO DE TEMA ========== //
-
-// Referência ao corpo (body) do documento HTML.
+// --- Elementos Gerais e de Tema ---
 const body = document.body;
-// Referência ao botão de alternância de tema.
-const botaoTema = document.querySelector('.tema');
-// Referência ao botão tema escuro
-const modoEscuro = document.querySelector('#modo-escuro');
-// Referência ao botão tema escuro
-const modoClaro = document.querySelector('#modo-claro');
+const botaoTema = document.querySelector(".tema");
+const modoEscuro = document.querySelector("#modo-escuro");
+const modoClaro = document.querySelector("#modo-claro");
+
+// --- Container das Extensões ---
+const containerExtensao = document.querySelector(".extensoes");
+
+// --- Container dos Botões de Filtro ---
+const containerFiltros = document.querySelector(".lista-opcoes");
+
+// ========== LÓGICA PARA ALTERAÇÃO DE TEMA ========== //
 
 // Variável que armazena o tema atual da página ('claro' ou 'escuro').
-let temaAtual = 'escuro';
+let temaAtual;
 
 // Função responsável por alternar o tema da página.
-function alterarTema(){
+function alterarTema() {
+  // Alterna as classes de tema no body.
+  body.classList.toggle("tema-claro");
+  body.classList.toggle("tema-escuro");
 
-    // Verifica se o tema atual é o modo escuro.
-    if(temaAtual === 'escuro'){
+  // Alterna a classe 'inativo' nos botões de tema.
+  modoEscuro.classList.toggle("inativo");
+  modoClaro.classList.toggle("inativo");
 
-        // Substitui a classe de tema escuro pela de tema claro no corpo da página.
-        body.classList.replace('tema-escuro', 'tema-claro');
-
-        // Remove a classe 'inativo' do ícone/botão de modo escuro.
-        modoEscuro.classList.remove('inativo');
-
-        // Adiciona a classe 'ativo' ao ícone/botão de modo claro.
-        modoClaro.classList.add('inativo');
-
-         // Atualiza o valor da variável indicando que o tema atual é o claro.
-        temaAtual = 'claro';
-    }else{
-         // Substitui a classe de tema claro pela de tema escuro no corpo da página.
-        body.classList.replace('tema-claro','tema-escuro');
-
-        // Remove a classe 'inativo' do ícone/botão de modo claro.
-        modoClaro.classList.remove('inativo');
-
-        // Adiciona a classe 'inativo' ao ícone/botão de modo escuro.
-        modoEscuro.classList.add('inativo');
-
-        // Atualiza o valor da variável indicando que o tema atual é o escuro.
-        temaAtual = 'escuro';
-    }
-    // Salva o tema atual no armazenamento local do navegador (localStorage)
-    localStorage.setItem('tema', temaAtual);
+  // Atualiza a variável de tema e a salva no localStorage.
+  temaAtual = body.classList.contains("tema-escuro") ? "escuro" : "claro";
+  localStorage.setItem("tema", temaAtual);
 }
 
-// Evento que é executado quando todo o conteúdo da página é carregado.
-document.addEventListener('DOMContentLoaded', () =>{
+// Função para carregar o tema salvo ou definir um padrão.
+function carregarTema() {
+  const temaSalvo = localStorage.getItem("tema");
 
-      // Recupera o tema salvo anteriormente no localStorage (se existir).
-    const temaSalvo = localStorage.getItem('tema');
+  // Define o tema com base no que está salvo, ou 'escuro' como padrão.
+  temaAtual = temaSalvo || "escuro";
 
-    // Verifica se o tema salvo é o escuro.
-    if (temaSalvo === 'escuro') {
+  // Remove classes existentes para garantir um estado limpo.
+  body.classList.remove("tema-claro", "tema-escuro");
+  modoClaro.classList.remove("inativo");
+  modoEscuro.classList.remove("inativo");
 
-        // Aplica a classe de tema escuro ao corpo da página.
-        body.classList.add('tema-escuro');
+  // Aplica as classes corretas com base no tema.
+  if (temaAtual === "claro") {
+    body.classList.add("tema-claro");
+    modoClaro.classList.add("inativo");
+  } else {
+    body.classList.add("tema-escuro");
+    modoEscuro.classList.add("inativo");
+  }
+}
 
-        // Ativa visualmente o ícone/botão de modo escuro.
-        modoEscuro.classList.add('inativo');
+// Eventos de Tema
+document.addEventListener("DOMContentLoaded", carregarTema);
+botaoTema.addEventListener("click", alterarTema);
 
-        // Remove a ativação do ícone/botão de modo claro.
-        modoClaro.classList.remove('inativo');
+// ========== LÓGICA DE FILTRAGEM DE EXTENSÕES ==========
 
-        // Define a variável de controle como 'escuro'.
-        temaAtual = 'escuro';
+function filtrarExtensoes(estado) {
+  const checkboxes = document.querySelectorAll(".ckb");
 
+  checkboxes.forEach((checkbox) => {
+    // .closest() é uma forma mais segura de encontrar o elemento pai.
+    const blocoExtensaoPai = checkbox.closest(".bloco-extensao");
+
+    // Se 'estado' for undefined (botão "All"), mostra todos os blocos.
+    if (estado === undefined) {
+      blocoExtensaoPai.style.display = "flex";
+      // Se o estado do checkbox for igual ao estado do filtro, mostra o bloco.
+    } else if (checkbox.checked === estado) {
+      blocoExtensaoPai.style.display = "flex";
+      // Caso contrário, esconde o bloco.
     } else {
-        // Caso contrário, aplica o tema claro por padrão.
-        body.classList.add('tema-claro');
-
-        // Ativa visualmente o ícone/botão de modo claro.
-        modoClaro.classList.add('inativo');
-
-        // Remove a ativação do ícone/botão de modo escuro.
-        modoEscuro.classList.remove('inativo');
-
-        // Define a variável de controle como 'claro'.
-        temaAtual = 'claro';
+      blocoExtensaoPai.style.display = "none";
     }
-})
-
-// Adiciona um ouvinte de evento de clique ao botão de alternância de tema.
-// Ao clicar no botão, a função 'alterarTema()' é chamada.
-botaoTema.addEventListener('click', alterarTema);
-
-const containerExtensao = document.querySelector('.extensoes');
-
-// ========== LOGICA PARA ADICIONAR UM VALOR NOS IDS DOS INPUTS ========== //
-
-let acumulador = 0
- const contadorINPUT = () =>{ return ++acumulador};
-let acumulador1 = 0
- const contadorBlocoEXT = () =>{return ++acumulador1;}
-
-
-// ========== LOGICA BOTOES EXTENSOES ========== //
-
-// Referência ao botão que exibe apenas as extensões inativas.
-const botaoInativo = document.querySelector('.inativos');
-
-// Referência ao botão que exibe apenas as extensões ativas.
-const botaoAtivo = document.querySelector('.ativos');
-
-// Referência ao botão que exibe todas as extensões.
-const botaoTodos = document.querySelector('.todos');
-
-// Referência ao bloco que contém as extensões.
-const blocoExtensao = document.querySelector('.bloco-extensao');
-
-// --------------------------------------------------------------
-// Função responsável por mostrar ou ocultar extensões
-// conforme o estado dos checkboxes (ativos/inativos).
-// --------------------------------------------------------------
-function executarAcao(valor) {
-    // Seleciona todos os elementos com a classe '.ckb' (checkboxes de ativação).
-    const ativar_desativar_extensao = [...document.querySelectorAll('.ckb')];
-
-    // Armazena a lista de checkboxes em uma variável.
-    const elementos = ativar_desativar_extensao;
-
-    // Percorre cada checkbox encontrado.
-    elementos.forEach(elemento => {
-        // Obtém o elemento pai principal (bloco da extensão correspondente).
-        const blocoExtensaoPai = elemento.parentElement.parentElement.parentElement;
-
-        // Verifica o estado do checkbox em relação ao valor recebido.
-        // Se o estado do checkbox for igual ao valor passado na função,
-        // o bloco é ocultado. Caso contrário, ele é exibido.
-        if (elemento.checked === valor) {
-            blocoExtensaoPai.style.display = 'none';
-        } else {
-            blocoExtensaoPai.style.display = 'flex';
-        }
-    });
+  });
 }
 
-// --------------------------------------------------------------
-// Eventos de clique nos botões de filtro de extensões.
-// --------------------------------------------------------------
+// Evento de clique para os botões de filtro (usando delegação de eventos)
+containerFiltros.addEventListener("click", (evt) => {
+  const botaoClicado = evt.target;
 
-// Quando o botão "Inativos" é clicado, oculta as extensões ativas
-// e mostra apenas as que estão desativadas.
-botaoInativo.addEventListener('click', evt => {
-    executarAcao(true);
-});
-
-// Quando o botão "Ativos" é clicado, oculta as extensões inativas
-// e mostra apenas as que estão ativas.
-botaoAtivo.addEventListener('click', evt => {
-    executarAcao(false);
-});
-
-// Quando o botão "Todos" é clicado, exibe todas as extensões.
-botaoTodos.addEventListener('click', evt => {
-    executarAcao();
+  if (botaoClicado.classList.contains("ativos")) {
+    filtrarExtensoes(true); // true para ativos (checked)
+  } else if (botaoClicado.classList.contains("inativos")) {
+    filtrarExtensoes(false); // false para inativos (not checked)
+  } else if (botaoClicado.classList.contains("todos")) {
+    filtrarExtensoes(); // undefined para todos
+  }
 });
 
 // --------------------------------------------------------------
 // ========== LÓGICA DO BOTÃO "REMOVER" ==========
 // --------------------------------------------------------------
 
-// Referência ao container principal que contém todas as extensões.
-const caixaExtensoes = document.querySelector('.extensoes');
-
 // Adiciona um evento de clique ao container de extensões.
 // Essa técnica (delegação de eventos) permite capturar cliques
 // em qualquer botão "Remover" existente dentro do container.
-caixaExtensoes.addEventListener('click', evt => {
+containerExtensao.addEventListener("click", (evt) => {
+  // Verifica se o elemento clicado possui a classe 'botaoRemover'.
+  if (evt.target.classList.contains("botaoRemover")) {
+    // Encontra o elemento pai mais próximo com a classe '.bloco-extensao',
+    // que representa o bloco da extensão que será removida.
+    const bloco = evt.target.closest(".bloco-extensao");
 
-    // Verifica se o elemento clicado possui a classe 'botaoRemover'.
-    if (evt.target.classList.contains('botaoRemover')) {
+    // Exibe uma caixa de confirmação para o usuário.
+    const confirmar = confirm("Deseja remover esta extensão?");
 
-        // Encontra o elemento pai mais próximo com a classe '.bloco-extensao',
-        // que representa o bloco da extensão que será removida.
-        const bloco = evt.target.closest('.bloco-extensao');
-        
-        // Exibe uma caixa de confirmação para o usuário.
-        const confirmar = confirm('Deseja remover esta extensão?');
-
-        // Se o usuário confirmar, remove o bloco da extensão da página.
-        if (confirmar) {
-            bloco.remove();
-        }
+    // Se o usuário confirmar, remove o bloco da extensão da página.
+    if (confirmar) {
+      bloco.remove();
     }
+  }
 });
