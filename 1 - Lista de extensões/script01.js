@@ -2,7 +2,9 @@
 
 // ========== LOGICA PARA ALTERAÇÃO DE TEMA ========== //
 
-// Referência ao corpo (body) do documento HTML.
+// Evento que é executado quando todo o conteúdo da página é carregado.
+document.addEventListener('DOMContentLoaded', () =>{
+    // Referência ao corpo (body) do documento HTML.
 const body = document.body;
 // Referência ao botão de alternância de tema.
 const botaoTema = document.querySelector('.tema');
@@ -20,8 +22,11 @@ function alterarTema(){
     // Verifica se o tema atual é o modo escuro.
     if(temaAtual === 'escuro'){
 
-        // Substitui a classe de tema escuro pela de tema claro no corpo da página.
-        body.classList.replace('tema-escuro', 'tema-claro');
+        // Remove a classe de tema escuro pela de tema claro no corpo da página.
+        body.classList.remove('tema-escuro');
+        
+        // adiciona a classe de tema escuro pela de tema claro no corpo da página.
+        body.classList.add('tema-claro');
 
         // Remove a classe 'inativo' do ícone/botão de modo escuro.
         modoEscuro.classList.remove('inativo');
@@ -32,8 +37,12 @@ function alterarTema(){
          // Atualiza o valor da variável indicando que o tema atual é o claro.
         temaAtual = 'claro';
     }else{
-         // Substitui a classe de tema claro pela de tema escuro no corpo da página.
-        body.classList.replace('tema-claro','tema-escuro');
+
+        // Remove a classe de tema claro pela de tema claro no corpo da página.
+        body.classList.remove('tema-claro');
+        
+        // adiciona a classe de tema escuro pela de tema claro no corpo da página.
+        body.classList.add('tema-escuro');
 
         // Remove a classe 'inativo' do ícone/botão de modo claro.
         modoClaro.classList.remove('inativo');
@@ -47,9 +56,6 @@ function alterarTema(){
     // Salva o tema atual no armazenamento local do navegador (localStorage)
     localStorage.setItem('tema', temaAtual);
 }
-
-// Evento que é executado quando todo o conteúdo da página é carregado.
-document.addEventListener('DOMContentLoaded', () =>{
 
       // Recupera o tema salvo anteriormente no localStorage (se existir).
     const temaSalvo = localStorage.getItem('tema');
@@ -82,11 +88,13 @@ document.addEventListener('DOMContentLoaded', () =>{
         // Define a variável de controle como 'claro'.
         temaAtual = 'claro';
     }
+
+    // Adiciona um ouvinte de evento de clique ao botão de alternância de tema.
+    // Ao clicar no botão, a função 'alterarTema()' é chamada.
+    botaoTema.addEventListener('click', alterarTema);
 })
 
-// Adiciona um ouvinte de evento de clique ao botão de alternância de tema.
-// Ao clicar no botão, a função 'alterarTema()' é chamada.
-botaoTema.addEventListener('click', alterarTema);
+
 
 const containerExtensao = document.querySelector('.extensoes');
 
