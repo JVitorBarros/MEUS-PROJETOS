@@ -1,5 +1,5 @@
 // Faz uma requisição ao arquivo 'data.json' para obter os dados das extensões.
-fetch('data.json')
+fetch('./dados/data.json')
     // Converte a resposta da requisição em formato JSON.
     .then(resposta => resposta.json())
     // Desestrutura o objeto retornado para acessar diretamente a propriedade 'extensoes'.

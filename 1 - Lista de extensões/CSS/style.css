@@ -15,7 +15,7 @@
 @font-face {
     font-family: 'Noto Sans';
     font-style: italic;
-    src: url("assets/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+    src: url("../assets/fonts/NotoSans-Italic-VariableFont_wdth,wght.ttf") format("truetype");
 }
 
 /* ========== Variáveis de cores ========== */
