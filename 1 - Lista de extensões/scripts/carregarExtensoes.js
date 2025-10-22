@@ -71,7 +71,8 @@ fetch('./dados/data.json')
             // ---------- Atribuição de conteúdos e valores ---------- //
 
             // Insere o logo da extensão dentro da caixa do logo.
-            caixaLogo.innerHTML = `<img src='${extensao.logo}'>`;
+            caixaLogo.innerHTML = `<
+             src='${extensao.logo}'>`;
 
             // Define o texto do título com o nome da extensão.
             titulo.innerHTML = extensao.name;
